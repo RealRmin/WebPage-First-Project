@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="Fa">
+
+<head>
+    <meta name="description" content="Rmin's WebPage">
+    <meta charset="UTF-8">
+    <meta dir="rtl">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rmin Web</title>
+</head>
+
+<body>const elements = document.querySelectorAll('[data-fa]');
+    const btn = document.getElementById('langToggle');
+
+    let lang = localStorage.getItem('lang') || 'fa';
+
+    function setLang(language) {
+    elements.forEach(el => {
+    el.textContent = el.dataset[language];
+    });
+    document.documentElement.lang = language;
+    document.body.dir = language === 'fa' ? 'rtl' : 'ltr';
+    localStorage.setItem('lang', language);
+    }
+
+    btn.onclick = () => {
+    lang = lang === 'fa' ? 'en' : 'fa';
+    setLang(lang);
+    };
+
+    setLang(lang);
+
+
+
+</body>
+
+</html>
