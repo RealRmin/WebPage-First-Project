@@ -1,12 +1,67 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <defs>
+    <!-- glitch slices -->
+    <clipPath id="slice1">
+      <rect x="0" y="0" width="120" height="35"/>
+    </clipPath>
+    <clipPath id="slice2">
+      <rect x="0" y="40" width="120" height="30"/>
+    </clipPath>
+    <clipPath id="slice3">
+      <rect x="0" y="75" width="120" height="45"/>
+    </clipPath>
+  </defs>
+
+  <!-- base shadow -->
   <text
-    x="50"
-    y="72"
+    x="60"
+    y="84"
     text-anchor="middle"
-    font-size="72"
+    font-size="86"
     font-family="Inter, Arial, sans-serif"
-    font-weight="600"
-    fill="#2ee6d6">
+    font-weight="800"
+    fill="#000"
+    opacity="0.4">
+    R
+  </text>
+
+  <!-- magenta slice -->
+  <text
+    x="58"
+    y="82"
+    text-anchor="middle"
+    font-size="86"
+    font-family="Inter, Arial, sans-serif"
+    font-weight="800"
+    fill="#ff3cac"
+    clip-path="url(#slice1)">
+    R
+  </text>
+
+  <!-- cyan slice -->
+  <text
+    x="62"
+    y="80"
+    text-anchor="middle"
+    font-size="86"
+    font-family="Inter, Arial, sans-serif"
+    font-weight="800"
+    fill="#2ee6d6"
+    clip-path="url(#slice2)">
+    R
+  </text>
+
+  <!-- white glitch slice -->
+  <text
+    x="56"
+    y="83"
+    text-anchor="middle"
+    font-size="86"
+    font-family="Inter, Arial, sans-serif"
+    font-weight="800"
+    fill="#ffffff"
+    opacity="0.9"
+    clip-path="url(#slice3)">
     R
   </text>
 </svg>
