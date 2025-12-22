@@ -1,159 +1,205 @@
 <!DOCTYPE html>
 <html lang="fa">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rmin | Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rmin | Portfolio</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
-  <style>
-    :root{
-      --bg:#000;
-      --text:#eaeaea;
-      --card:rgba(20,20,25,0.65);
-      --accent:#2ee6d6;
-    }
-    body.light{
-      --bg:#f4f4f4;
-      --text:#111;
-      --card:rgba(255,255,255,0.75);
-      --accent:#0077ff;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      background:var(--bg);
-      color:var(--text);
-      font-family:Vazirmatn, Inter, sans-serif;
-      overflow-x:hidden;
-    }
+<style>
+:root{
+  --bg:#000;
+  --text:#eaeaea;
+  --card:rgba(20,20,25,0.65);
+  --accent:#2ee6d6;
+}
+body.light{
+  --bg:#f4f4f4;
+  --text:#111;
+  --card:rgba(255,255,255,0.75);
+  --accent:#0077ff;
+}
 
-    canvas{
-      position:fixed;
-      inset:0;
-      z-index:-1;
-    }
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Vazirmatn,Inter,sans-serif;
+}
 
-    header{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:14px 20px;
-    }
+canvas{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+}
 
-    header strong{font-size:18px}
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:16px 20px;
+}
 
-    header .actions{display:flex;gap:10px}
+header button{
+  width:40px;height:40px;
+  border-radius:10px;
+  border:1px solid var(--accent);
+  background:none;
+  color:var(--accent);
+  cursor:pointer;
+}
 
-    header button{
-      width:42px;height:42px;
-      border-radius:10px;
-      border:1px solid var(--accent);
-      background:none;
-      color:var(--accent);
-      cursor:pointer;
-      font-size:18px;
-    }
+main{
+  max-width:900px;
+  margin:auto;
+  padding:40px 20px;
+}
 
-    main{max-width:900px;margin:auto;padding:40px 20px}
+.card{
+  background:var(--card);
+  backdrop-filter:blur(6px);
+  border-radius:18px;
+  padding:30px;
+  margin-bottom:30px;
+}
 
-    .card{
-      background:var(--card);
-      backdrop-filter:blur(6px);
-      border-radius:18px;
-      padding:30px;
-      margin-bottom:30px;
-    }
+.avatar{
+  width:110px;
+  height:110px;
+  border-radius:50%;
+  border:3px solid var(--accent);
+  margin-bottom:20px;
+  background:#222;
+}
 
-    .avatar{
-      width:110px;height:110px;
-      border-radius:50%;
-      border:3px solid var(--accent);
-      margin-bottom:20px;
-      background:#222 url('profile.jpg') center/cover;
-    }
+h1{
+  margin:0 0 10px;
+  font-size:32px;
+  position:relative;
+}
 
-    h1{
-      margin:0 0 10px 0;
-      font-size:32px;
-      position:relative;
-    }
+h1.glitch::after{
+  content:attr(data-text);
+  position:absolute;
+  left:2px;top:0;
+  color:#ff3cac;
+  opacity:.6;
+  animation:glitch .5s steps(2,end);
+}
 
-    h1.glitch::after{
-      content:attr(data-text);
-      position:absolute;left:2px;top:0;
-      color:#ff3cac;
-      opacity:.6;
-      animation:glitch .6s infinite alternate-reverse;
-    }
+@keyframes glitch{
+  0%{clip-path:inset(0 0 80% 0)}
+  50%{clip-path:inset(40% 0 40% 0)}
+  100%{clip-path:inset(80% 0 0 0)}
+}
 
-    @keyframes glitch{
-      0%{clip-path:inset(0 0 90% 0)}
-      50%{clip-path:inset(40% 0 40% 0)}
-      100%{clip-path:inset(90% 0 0 0)}
-    }
+.tabs{display:flex;gap:10px;margin-bottom:20px}
+.tabs button{
+  border:1px solid var(--accent);
+  background:none;
+  color:var(--accent);
+  padding:8px 14px;
+  border-radius:10px;
+  cursor:pointer;
+}
+.tabs button.active{
+  background:var(--accent);
+  color:#000;
+}
 
-    .tabs{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap}
-    .tabs button{
-      border:1px solid var(--accent);
-      background:none;color:var(--accent);
-      padding:8px 14px;border-radius:10px;cursor:pointer
-    }
-    .tabs button.active{background:var(--accent);color:#000}
+section{display:none}
+section.active{display:block}
 
-    section{display:none}
-    section.active{display:block}
-
-    footer{text-align:center;padding:20px;opacity:.6}
-
-    @media(max-width:600px){h1{font-size:26px}}
-  </style>
+footer{
+  text-align:center;
+  opacity:.5;
+  padding:20px;
+}
+</style>
 </head>
+
 <body>
 
 <canvas id="bg"></canvas>
 
 <header>
-  <strong>Rmin</strong>
-  <div class="actions">
-    <button id="langBtn">🌐</button>
-    <button id="themeBtn">🌙</button>
-  </div>
+<strong>Rmin</strong>
+<div>
+  <button id="langBtn">🌐</button>
+  <button id="themeBtn">🌙</button>
+</div>
 </header>
 
 <main>
-  <div class="card">
-    <div class="avatar"></div>
-    <h1 id="name" data-text="Rmin" data-fa="سلام، من رمین هستم" data-en="Hi, I'm Rmin"></h1>
-    <p data-fa="برنامه‌نویس وب و پایتون. در حال ساختن و یادگیری." data-en="Web & Python developer. Learning by building."></p>
+
+<div class="card">
+  <div class="avatar"></div>
+  <h1 id="name"
+      data-fa="سلام، من رمین هستم"
+      data-en="Hi, I'm Rmin"
+      data-text="Rmin">Rmin</h1>
+
+  <p data-fa="برنامه‌نویس وب و پایتون. در حال ساختن و یادگیری."
+     data-en="Web & Python developer. Learning by building."></p>
+</div>
+
+<div class="card">
+  <div class="tabs">
+    <button class="tab active" data-target="home" data-fa="خانه" data-en="Home">خانه</button>
+    <button class="tab" data-target="projects" data-fa="پروژه‌ها" data-en="Projects">پروژه‌ها</button>
+    <button class="tab" data-target="contact" data-fa="تماس" data-en="Contact">تماس</button>
   </div>
 
-  <div class="card">
-    <div class="tabs">
-      <button class="tab active" data-target="home" data-fa="خانه" data-en="Home"></button>
-      <button class="tab" data-target="projects" data-fa="پروژه‌ها" data-en="Projects"></button>
-      <button class="tab" data-target="contact" data-fa="تماس" data-en="Contact"></button>
-    </div>
+  <section id="home" class="active">
+    <p data-fa="این صفحه معرفی شخصی من است."
+       data-en="This is my personal page."></p>
+  </section>
 
-    <section id="home" class="active">
-      <p data-fa="این صفحه معرفی شخصی من است." data-en="This is my personal page."></p>
-    </section>
+  <section id="projects">
+    <p>Coming soon…</p>
+  </section>
 
-    <section id="projects">
-      <p data-fa="پروژه‌ها به‌زودی اضافه می‌شوند." data-en="Projects will be added soon."></p>
-    </section>
+  <section id="contact">
+    <p>Email: example@email.com</p>
+  </section>
+</div>
 
-    <section id="contact">
-      <p>Email: example@email.com</p>
-    </section>
-  </div>
 </main>
 
 <footer>© 2025</footer>
 
 <script>
-/* tabs */
+/* ---------- language ---------- */
+let lang=localStorage.getItem('lang')||'fa'
+const transEls=document.querySelectorAll('[data-fa]')
+
+function setLang(l){
+  transEls.forEach(el=>el.textContent=el.dataset[l])
+  document.body.dir=l==='fa'?'rtl':'ltr'
+  localStorage.setItem('lang',l)
+}
+setLang(lang)
+
+document.getElementById('langBtn').onclick=()=>{
+  lang=lang==='fa'?'en':'fa'
+  setLang(lang)
+}
+
+/* ---------- theme ---------- */
+document.getElementById('themeBtn').onclick=()=>{
+  document.body.classList.toggle('light')
+}
+
+/* ---------- glitch ---------- */
+const name=document.getElementById('name')
+setInterval(()=>{
+  name.classList.add('glitch')
+  setTimeout(()=>name.classList.remove('glitch'),180)
+},4500)
+
+/* ---------- tabs ---------- */
 document.querySelectorAll('.tab').forEach(btn=>{
   btn.onclick=()=>{
     document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'))
@@ -163,55 +209,30 @@ document.querySelectorAll('.tab').forEach(btn=>{
   }
 })
 
-/* language */
-const texts=document.querySelectorAll('[data-fa]')
-let lang=localStorage.getItem('lang')||'fa'
-function setLang(l){
-  texts.forEach(el=>el.textContent=el.dataset[l])
-  document.body.dir=l==='fa'?'rtl':'ltr'
-  document.documentElement.lang=l
-  localStorage.setItem('lang',l)
-}
-document.getElementById('langBtn').onclick=()=>{
-  lang=lang==='fa'?'en':'fa'
-  setLang(lang)
-}
-setLang(lang)
-
-/* theme */
-document.getElementById('themeBtn').onclick=()=>{
-  document.body.classList.toggle('light')
-}
-
-/* glitch trigger */
-const name=document.getElementById('name')
-setInterval(()=>{
-  name.classList.add('glitch')
-  setTimeout(()=>name.classList.remove('glitch'),200)
-},4000)
-
-/* pixel background */
+/* ---------- background ---------- */
 const canvas=document.getElementById('bg')
 const ctx=canvas.getContext('2d')
-let speedFactor=1
 
-function resize(){canvas.width=innerWidth;canvas.height=innerHeight}
-window.addEventListener('resize',resize);resize()
+function resize(){
+  canvas.width=innerWidth
+  canvas.height=innerHeight
+}
+resize()
+addEventListener('resize',resize)
 
-const colors=['#2ee6d6','#ff3cac','#8affff','#b388ff']
-let pixels=[]
-const COUNT=innerWidth<600?80:160
+const particles=[]
+const colors=['#2ee6d6','#ff3cac','#9fffff']
+const COUNT=120
 
 for(let i=0;i<COUNT;i++){
-  pixels.push({
+  particles.push({
     x:Math.random()*canvas.width,
     y:Math.random()*canvas.height,
-    w:Math.random()*20+4,
-    h:Math.random()*4+2,
-    a:Math.random()*0.7+0.2,
-    s:Math.random()*0.6+0.2,
-    c:colors[Math.floor(Math.random()*colors.length)],
-    r:Math.random()>0.6
+    w:Math.random()*18+4,
+    h:Math.random()*2+1,
+    a:Math.random()*0.5+0.2,
+    s:Math.random()*0.25+0.05,
+    c:colors[Math.random()*colors.length|0]
   })
 }
 
@@ -220,36 +241,26 @@ document.addEventListener('visibilitychange',()=>{
   running=!document.hidden
 })
 
-window.addEventListener('scroll',()=>{
-  speedFactor=0.2
-  clearTimeout(window._st)
-  window._st=setTimeout(()=>speedFactor=1,150)
-})
-
 function draw(){
   if(!running){requestAnimationFrame(draw);return}
   ctx.clearRect(0,0,canvas.width,canvas.height)
-  for(const p of pixels){
-    ctx.fillStyle=p.c
+
+  for(const p of particles){
     ctx.globalAlpha=p.a
-    if(p.r){
-      ctx.beginPath()
-      ctx.arc(p.x,p.y,p.h*1.2,0,Math.PI*2)
-      ctx.fill()
-    }else{
-      ctx.fillRect(p.x,p.y,p.w,p.h)
-    }
-    p.x-=p.s*speedFactor
-    p.y+=p.s*speedFactor
+    ctx.fillStyle=p.c
+    ctx.fillRect(p.x,p.y,p.w,p.h)
+
+    p.x-=p.s
+    p.y+=p.s
+
     if(p.y>canvas.height||p.x<0){
-      p.y=-20
       p.x=canvas.width+Math.random()*200
+      p.y=-20
     }
   }
   ctx.globalAlpha=1
   requestAnimationFrame(draw)
 }
-
 draw()
 </script>
 
