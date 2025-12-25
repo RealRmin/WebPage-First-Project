@@ -106,6 +106,11 @@
       animation: glitch .5s steps(2, end);
     }
 
+    p {
+  white-space: pre-line;
+  line-height: 1.9;
+}
+
     @keyframes glitch {
       0% {
         clip-path: inset(0 0 80% 0)
@@ -175,21 +180,29 @@
 
     <div class="card profile">
       <div class="avatar"></div>
-      <h1 id="name" data-fa="سلام، من رمین هستم" data-en="Hi, I'm Rmin" data-text="Rmin">Rmin</h1>
+      <h1 id="name" data-fa="Rmin" data-en="Rmin" data-text="Rmin">Rmin</h1>
 
-      <p data-fa="برنامه‌نویس وب و پایتون. در حال ساختن و یادگیری."
-        data-en="Web & Python developer. Learning by building."></p>
+      <p data-fa="🚀Currently building my first real-world projects 🚀"
+        data-en="🚀Currently building my first real-world projects 🚀"></p>
     </div>
 
     <div class="card">
       <div class="tabs">
-        <button class="tab active" data-target="home" data-fa="خانه" data-en="Home">خانه</button>
+        <button class="tab active" data-target="Bio" data-fa="بایو" data-en="Bio">بایو</button>
         <button class="tab" data-target="projects" data-fa="پروژه‌ها" data-en="Projects">پروژه‌ها</button>
         <button class="tab" data-target="contact" data-fa="تماس" data-en="Contact">تماس</button>
       </div>
 
-      <section id="home" class="active">
-        <p data-fa="این صفحه معرفی شخصی من است." data-en="This is my personal page."></p>
+      <section id="Bio" class="active">
+        <p data-fa="برنامه‌نویس جونیور وب و پایتون.
+مدرک پایتون دارم و HTML و CSS رو به‌صورت خودآموز یاد گرفتم؛ این سایت نتیجه‌ی یادگیری و تمرین خودمه.
+با Git و GitHub کار می‌کنم و برای ورود به کار تیمی آماده‌ام. آدم متعهد، خوش‌اخلاق و مسئولیت‌پذیری هستم.
+انگلیسی رو در حد خوندن داکیومنت‌ها و ارتباط پایه بلدم."
+          data-en="Junior Web & Python Developer.
+Experience with Python, HTML, and CSS.
+This website was designed and built by me.
+Familiar with Git and GitHub.
+Currently focused on learning through real projects."></p>
       </section>
 
       <section id="projects">
