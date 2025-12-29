@@ -89,6 +89,45 @@
       text-align: center;
     }
 
+    .contact-item {
+      display: flex;
+      gap: 10px;
+      margin: 14px 0;
+      align-items: center;
+    }
+
+    .contact-btn {
+      flex: 1;
+      text-align: center;
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      text-decoration: none;
+      transition: 0.2s;
+    }
+
+    .contact-btn:hover {
+      background: var(--accent);
+      color: #000;
+    }
+
+    .copy-btn {
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid var(--accent);
+      background: none;
+      color: var(--accent);
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .copy-btn:hover {
+      background: var(--accent);
+      color: #000;
+    }
+
+
 
     h1 {
       margin: 0 0 10px;
@@ -107,9 +146,9 @@
     }
 
     p {
-  white-space: pre-line;
-  line-height: 1.9;
-}
+      white-space: pre-line;
+      line-height: 1.9;
+    }
 
     @keyframes glitch {
       0% {
@@ -197,8 +236,7 @@
         <p data-fa="برنامه‌نویس جونیور وب و پایتون.
 مدرک پایتون دارم و HTML و CSS رو به‌صورت خودآموز یاد گرفتم؛ این سایت نتیجه‌ی یادگیری و تمرین خودمه.
 با Git و GitHub کار می‌کنم و برای ورود به کار تیمی آماده‌ام. آدم متعهد، خوش‌اخلاق و مسئولیت‌پذیری هستم.
-انگلیسی رو در حد خوندن داکیومنت‌ها و ارتباط پایه بلدم."
-          data-en="Junior Web & Python Developer.
+انگلیسی رو در حد خوندن داکیومنت‌ها و ارتباط پایه بلدم." data-en="Junior Web & Python Developer.
 Experience with Python, HTML, and CSS.
 This website was designed and built by me.
 Familiar with Git and GitHub.
@@ -210,8 +248,31 @@ Currently focused on learning through real projects."></p>
       </section>
 
       <section id="contact">
-        <p>Email: example@email.com</p>
+        <p data-fa="برای ارتباط یا همکاری، از راه‌های زیر می‌تونید با من در تماس باشید:"
+          data-en="For contact or collaboration, you can reach me via:"></p>
+
+        <div class="contact-item">
+          <a href="mailto:realadller@gmail.com" class="contact-btn">
+            📧 Email
+          </a>
+          <button class="copy-btn" onclick="copyText('realadller@gmail.com')">📋</button>
+        </div>
+
+        <div class="contact-item">
+          <a href="https://github.com/RealRmin" target="_blank" class="contact-btn">
+            💻 GitHub
+          </a>
+          <button class="copy-btn" onclick="copyText('https://github.com/RealRmin')">📋</button>
+        </div>
+
+        <div class="contact-item">
+          <a href="https://www.linkedin.com/in/realarmin/" target="_blank" class="contact-btn">
+            🔗 LinkedIn
+          </a>
+          <button class="copy-btn" onclick="copyText('https://www.linkedin.com/in/realarmin/')">📋</button>
+        </div>
       </section>
+
     </div>
 
   </main>
@@ -310,6 +371,12 @@ Currently focused on learning through real projects."></p>
       requestAnimationFrame(draw)
     }
     draw()
+    function copyText(text) {
+      navigator.clipboard.writeText(text)
+        .then(() => {
+          alert('Copied to clipboard ✔️')
+        })
+    }
   </script>
 
 </body>
